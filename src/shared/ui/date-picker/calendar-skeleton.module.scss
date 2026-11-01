@@ -1,0 +1,78 @@
+@use '@/shared/styles/mixins' as *;
+
+// Те же размеры, что у календаря в calendar.module.scss
+$cell-size: 36px;
+$weekday-height: 28px;
+
+.skeleton {
+  width: $cell-size * 7;
+}
+
+.header {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  height: 32px;
+  margin-bottom: 8px;
+  padding-left: 6px;
+}
+
+.grid {
+  display: grid;
+  grid-template-rows: $weekday-height repeat(6, $cell-size);
+  grid-template-columns: repeat(7, $cell-size);
+}
+
+.caption,
+.nav-button,
+.weekday,
+.day {
+  border-radius: 6px;
+  background:
+    linear-gradient(90deg, transparent 0%, var(--color-surface) 50%, transparent 100%) no-repeat,
+    var(--color-surface-hover);
+  background-size:
+    200% 100%,
+    100% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+.caption {
+  width: 110px;
+  height: 16px;
+  margin-right: auto;
+}
+
+.nav-button {
+  width: 28px;
+  height: 28px;
+}
+
+.weekday {
+  width: 18px;
+  height: 10px;
+  margin: auto;
+}
+
+.day {
+  margin: 4px;
+  border-radius: var(--radius-sm);
+}
+
+@keyframes shimmer {
+  from {
+    background-position:
+      150% 0,
+      0 0;
+  }
+
+  to {
+    background-position:
+      -50% 0,
+      0 0;
+  }
+}
+
+.visually-hidden {
+  @include visually-hidden;
+}

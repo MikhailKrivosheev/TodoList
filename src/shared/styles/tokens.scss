@@ -1,0 +1,74 @@
+:root {
+  color-scheme: light dark;
+
+  --font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --color-page: #f4f5fb;
+  --color-page-glow: rgb(91 91 214 / 12%);
+  --color-surface: #fff;
+  --color-surface-muted: #f8f8fc;
+  --color-surface-hover: #f1f1f8;
+  --color-border: #e4e5ef;
+  --color-border-strong: #cfd1e0;
+  --color-text: #1b1c2b;
+  --color-text-secondary: #6b6e85;
+  --color-text-muted: #a3a5b8;
+  --color-accent: #5b5bd6;
+  --color-accent-hover: #4b4bc4;
+  --color-accent-soft: rgb(91 91 214 / 10%);
+  --color-on-accent: #fff;
+  --color-danger: #e5484d;
+  --color-danger-soft: rgb(229 72 77 / 10%);
+  --color-focus: rgb(91 91 214 / 45%);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  --shadow-card: 0 1px 2px rgb(27 28 43 / 4%), 0 8px 24px -12px rgb(27 28 43 / 12%);
+  --shadow-panel: 0 1px 3px rgb(27 28 43 / 5%), 0 24px 48px -24px rgb(27 28 43 / 18%);
+
+  --transition-fast: 150ms ease;
+  --container-width: 760px;
+}
+
+// Тёмная палитра включается по системе, если тему не выбрали вручную, или принудительно —
+// кнопкой в шапке (data-theme на <html>, ставит features/switch-theme)
+@mixin dark-tokens {
+  color-scheme: dark;
+
+  --color-page: #111218;
+  --color-page-glow: rgb(110 110 230 / 18%);
+  --color-surface: #1a1b24;
+  --color-surface-muted: #16171f;
+  --color-surface-hover: #22232f;
+  --color-border: #2a2b38;
+  --color-border-strong: #3a3c4d;
+  --color-text: #ececf4;
+  --color-text-secondary: #9b9db3;
+  --color-text-muted: #61637a;
+  --color-accent: #7c7cf0;
+  --color-accent-hover: #9191f5;
+  --color-accent-soft: rgb(124 124 240 / 14%);
+  --color-danger: #ff6369;
+  --color-danger-soft: rgb(255 99 105 / 12%);
+  --color-focus: rgb(124 124 240 / 55%);
+
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 30%);
+  --shadow-panel: 0 24px 48px -24px rgb(0 0 0 / 60%);
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  @include dark-tokens;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    @include dark-tokens;
+  }
+}

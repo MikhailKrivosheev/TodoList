@@ -1,0 +1,94 @@
+@use '@/shared/styles/mixins' as *;
+
+.picker {
+  display: inline-flex;
+}
+
+.trigger {
+  @include reset-button;
+
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 10px 0 8px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface);
+  font-size: 14px;
+  white-space: nowrap;
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+
+  &:hover,
+  &:focus-visible,
+  &[aria-expanded='true'] {
+    border-color: var(--color-accent);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--color-accent-soft);
+  }
+}
+
+.icon {
+  color: var(--color-text-muted);
+}
+
+.placeholder {
+  color: var(--color-text-muted);
+}
+
+.popover {
+  inset: auto;
+  margin: 0;
+  padding: 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-panel);
+  color: var(--color-text);
+}
+
+.footer {
+  display: flex;
+  gap: 4px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--color-border);
+}
+
+.footer-button,
+.clear-button {
+  @include reset-button;
+
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.footer-button {
+  color: var(--color-accent);
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--color-accent-soft);
+  }
+}
+
+.clear-button {
+  margin-left: auto;
+  color: var(--color-text-secondary);
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--color-danger-soft);
+    color: var(--color-danger);
+  }
+}

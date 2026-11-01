@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+# Линтеры и форматтер по файлам коммита
+pnpm exec lint-staged

@@ -1,0 +1,33 @@
+@use '@/shared/styles/mixins' as *;
+
+.button {
+  @include reset-button;
+
+  display: inline-grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast),
+    opacity var(--transition-fast);
+}
+
+.neutral {
+  &:hover,
+  &:focus-visible {
+    background-color: var(--color-accent-soft);
+    color: var(--color-accent);
+  }
+}
+
+.danger {
+  &:hover,
+  &:focus-visible {
+    background-color: var(--color-danger-soft);
+    color: var(--color-danger);
+  }
+}

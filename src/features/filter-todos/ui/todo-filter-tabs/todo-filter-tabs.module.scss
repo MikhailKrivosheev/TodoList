@@ -1,0 +1,101 @@
+@use '@/shared/styles/mixins' as *;
+
+// Фильтры не шире панели. На мобильном блок фильтров — контейнер: если места меньше, чем нужно
+// вкладкам со счётчиками, счётчики прячутся (общий есть в шапке), а многоточие — крайний случай
+$width-with-counts: 302px;
+
+.nav {
+  min-width: 0;
+  max-width: 100%;
+
+  @include mobile {
+    flex: 1 1 100%;
+    container-type: inline-size;
+  }
+}
+
+.item {
+  display: flex;
+  flex: 0 1 auto;
+  min-width: 0;
+
+  @include mobile {
+    flex-grow: 1;
+  }
+}
+
+.list {
+  @include reset-list;
+
+  display: flex;
+  gap: 2px;
+  padding: 3px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-hover);
+}
+
+.link {
+  position: relative;
+  display: flex;
+  flex: 1;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  padding: 6px 12px;
+  border-radius: 9px;
+  color: var(--color-text-secondary);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+
+  &:hover,
+  &:focus-visible {
+    color: var(--color-text);
+  }
+
+  @include mobile {
+    padding-inline: 6px;
+  }
+}
+
+.link--active {
+  color: var(--color-text);
+}
+
+.indicator {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+
+.label,
+.count {
+  position: relative;
+}
+
+.label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.count {
+  flex-shrink: 0;
+  min-width: 20px;
+  padding: 0 6px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-accent-soft);
+  color: var(--color-accent);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  line-height: 18px;
+  text-align: center;
+
+  @container (width < #{$width-with-counts}) {
+    display: none;
+  }
+}

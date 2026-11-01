@@ -1,0 +1,76 @@
+@use '@/shared/styles/mixins' as *;
+
+.button {
+  @include reset-button;
+
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  white-space: nowrap;
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast),
+    opacity var(--transition-fast);
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+  }
+}
+
+.primary {
+  min-height: 44px;
+  padding-inline: 18px;
+  background-color: var(--color-accent);
+  color: var(--color-on-accent);
+
+  &:hover:not(:disabled),
+  &:focus-visible {
+    background-color: var(--color-accent-hover);
+  }
+}
+
+.ghost,
+.danger {
+  min-height: 32px;
+  padding-inline: 10px;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-secondary);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.ghost {
+  &:hover:not(:disabled),
+  &:focus-visible {
+    background-color: var(--color-surface-hover);
+    color: var(--color-text);
+  }
+}
+
+.danger {
+  &:hover:not(:disabled),
+  &:focus-visible {
+    background-color: var(--color-danger-soft);
+    color: var(--color-danger);
+  }
+}
+
+.soft {
+  min-height: 32px;
+  padding-inline: 10px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-accent-soft);
+  color: var(--color-accent);
+  font-size: 13px;
+  font-weight: 500;
+
+  &:hover:not(:disabled),
+  &:focus-visible {
+    background-color: var(--color-accent);
+    color: var(--color-on-accent);
+  }
+}

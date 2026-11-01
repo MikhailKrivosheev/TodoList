@@ -1,0 +1,30 @@
+{
+  "printWidth": 100,
+  "singleQuote": true,
+  "trailingComma": "all",
+  "plugins": ["@ianvs/prettier-plugin-sort-imports"],
+  "importOrder": [
+    "<BUILTIN_MODULES>",
+    "",
+    "^react$",
+    "<THIRD_PARTY_MODULES>",
+    "",
+    "^@/app(/.*)?$",
+    "^@/pages(/.*)?$",
+    "^@/widgets(/.*)?$",
+    "^@/features(/.*)?$",
+    "^@/entities(/.*)?$",
+    "^@/shared(/.*)?$",
+    "",
+    "^[./](?!.*\\.s?css$)",
+    "",
+    "\\.s?css$"
+  ],
+  "importOrderTypeScriptVersion": "6.0.0",
+  "overrides": [
+    {
+      "files": "*.md",
+      "options": { "proseWrap": "always" }
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+.summary {
+  color: var(--color-text-secondary);
+  font-size: 14px;
+}
+
+.line {
+  margin: 0;
+}
+
+.nearest,
+.deadline {
+  white-space: nowrap;
+}
+
+.deadline--urgent {
+  color: var(--color-danger);
+}
+
+.link {
+  display: inline-block;
+  max-width: min(28ch, 55vw);
+  overflow: hidden;
+  color: var(--color-text);
+  text-decoration: underline 1px;
+  text-decoration-color: color-mix(in srgb, currentcolor 35%, transparent);
+  text-overflow: ellipsis;
+  text-underline-offset: 3px;
+  white-space: nowrap;
+  vertical-align: bottom;
+  transition:
+    color var(--transition-fast),
+    text-decoration-color var(--transition-fast);
+
+  &:hover,
+  &:focus-visible {
+    color: var(--color-accent);
+    text-decoration-color: currentcolor;
+  }
+}

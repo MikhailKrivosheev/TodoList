@@ -1,0 +1,48 @@
+.checkbox {
+  position: relative;
+  display: inline-grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--color-border-strong);
+  border-radius: 7px;
+  background-color: var(--color-surface);
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast);
+
+  &:hover,
+  &:has(.input:focus-visible) {
+    border-color: var(--color-accent);
+  }
+
+  &:has(.input:focus-visible) {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+}
+
+.checkbox--checked {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent);
+}
+
+.input {
+  position: absolute;
+  inset: -6px;
+  margin: 0;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.mark {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: var(--color-on-accent);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.25;
+  pointer-events: none;
+}

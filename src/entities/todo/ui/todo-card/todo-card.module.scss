@@ -1,0 +1,134 @@
+@use '@/shared/styles/mixins' as *;
+
+.card {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 17px 10px 17px 18px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-card);
+  line-height: 22px;
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast);
+
+  &:hover,
+  &:has(:focus-visible) {
+    border-color: var(--color-border-strong);
+  }
+}
+
+.card--urgent {
+  border-color: color-mix(in srgb, var(--color-danger) 35%, var(--color-border));
+
+  &:hover,
+  &:has(:focus-visible) {
+    border-color: color-mix(in srgb, var(--color-danger) 55%, var(--color-border));
+  }
+}
+
+.card--completed {
+  background-color: var(--color-surface-muted);
+  box-shadow: none;
+}
+
+.body {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  display: block;
+  overflow-wrap: anywhere;
+  text-decoration: line-through 1.5px transparent;
+  transition:
+    color var(--transition-fast),
+    text-decoration-color var(--transition-fast);
+
+  .card--completed & {
+    color: var(--color-text-muted);
+    text-decoration-color: currentcolor;
+  }
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 8px;
+  align-items: center;
+  margin: 2px 0 -2px -4px;
+}
+
+.toggle {
+  @include reset-button;
+
+  display: inline-flex;
+  gap: 2px;
+  align-items: center;
+  padding: 0 4px;
+  border-radius: 6px;
+  color: var(--color-text-muted);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 20px;
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast);
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--color-accent-soft);
+    color: var(--color-accent);
+  }
+}
+
+.toggle--open {
+  color: var(--color-accent);
+}
+
+.chevron {
+  width: 14px;
+  height: 14px;
+  transition: transform var(--transition-fast);
+
+  .toggle--open & {
+    transform: rotate(180deg);
+  }
+}
+
+.description-wrapper {
+  overflow: hidden;
+}
+
+.description {
+  margin: 8px 0 2px;
+  padding-left: 12px;
+  border-left: 2px solid var(--color-border-strong);
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+
+  .card--completed & {
+    color: var(--color-text-muted);
+  }
+}
+
+.actions {
+  display: flex;
+  gap: 2px;
+  margin-block: -5px;
+  transition: opacity var(--transition-fast);
+
+  @include hover-device {
+    opacity: 0;
+
+    .card:hover &,
+    .card:has(:focus-visible) & {
+      opacity: 1;
+    }
+  }
+}
